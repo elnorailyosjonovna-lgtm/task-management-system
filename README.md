@@ -7,3 +7,13 @@ A production-ready Django task management system using Docker, PostgreSQL, Gunic
 - Update tasks
 - Delete tasks
 - Mark tasks as completed
+
+## Technologies Used
+
+- Python
+- Django
+- PostgreSQL
+- Docker
+- Docker Compose
+- Gunicorn
+- Nginx
