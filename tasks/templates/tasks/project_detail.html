@@ -1,0 +1,113 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h2>{{ project.name }}</h2>
+    <p class="text-muted">{{ project.description }}</p>
+</div>
+
+<!-- ADD TASK CARD -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5>Add Task</h5>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button class="btn btn-primary">
+                Add Task
+            </button>
+        </form>
+    </div>
+</div>
+
+<h3 class="mt-4 mb-3">Tasks</h3>
+
+<div class="row">
+
+{% for task in tasks %}
+<div class="col-md-4 mb-4">
+
+    <div class="card shadow-sm h-100">
+
+        <div class="card-body">
+
+            <h5 class="card-title">{{ task.title }}</h5>
+
+            <p class="text-muted">
+                {{ task.description|truncatewords:12 }}
+            </p>
+
+            {% if task.status == "COMPLETED" %}
+                <span class="badge bg-success">Completed</span>
+            {% elif task.status == "IN_PROGRESS" %}
+                <span class="badge bg-primary">In Progress</span>
+            {% else %}
+                <span class="badge bg-secondary">Pending</span>
+            {% endif %}
+
+            {% if task.priority == "HIGH" %}
+                <span class="badge bg-danger">High</span>
+            {% elif task.priority == "MEDIUM" %}
+                <span class="badge bg-warning text-dark">Medium</span>
+            {% else %}
+                <span class="badge bg-info">Low</span>
+            {% endif %}
+
+            <hr>
+
+            <small class="text-muted">
+                Due: {{ task.due_date }}
+            </small>
+
+        </div>
+
+        <div class="card-footer bg-white d-flex justify-content-between">
+
+    <a href="{% url 'edit_task' task.pk %}"
+       class="btn btn-sm btn-outline-warning">
+       ✏ Edit
+    </a>
+
+    <div>
+
+        <!-- TOGGLE BUTTON -->
+        <a href="{% url 'toggle_task_status' task.pk %}"
+           class="btn btn-sm
+           {% if task.status == 'COMPLETED' %}
+                btn-success
+           {% else %}
+                btn-outline-success
+           {% endif %}">
+           
+           {% if task.status == "COMPLETED" %}
+               ✓ Completed
+           {% else %}
+               ✓ Complete
+           {% endif %}
+        </a>
+
+        <a href="{% url 'delete_task' task.pk %}"
+           class="btn btn-sm btn-outline-danger">
+           🗑
+        </a>
+
+    </div>
+
+</div>
+    </div>
+
+</div>
+{% empty %}
+<p class="text-muted">No tasks yet.</p>
+{% endfor %}
+
+</div>
+
+<a href="{% url 'home' %}" class="btn btn-outline-secondary">
+    ← Back
+</a>
+
+{% endblock %}

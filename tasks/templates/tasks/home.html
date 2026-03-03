@@ -1,0 +1,38 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">Your Projects</h2>
+
+<a href="{% url 'create_project' %}" class="btn btn-primary mb-3">
+    + New Project
+</a>
+
+<div class="row">
+    {% for project in projects %}
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        {{ project.name }}
+                    </h5>
+
+                    <p class="card-text">
+                        {{ project.description }}
+                    </p>
+
+                    <a href="{% url 'project_detail' project.pk %}"
+                       class="btn btn-outline-primary btn-sm">
+                        Open
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No projects yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

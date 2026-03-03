@@ -1,0 +1,49 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# ----------------------
+# Virtual Environment
+# ----------------------
+venv/
+env/
+.venv/
+
+# ----------------------
+# Environment Variables 
+# ----------------------
+.env
+.env.local
+.env.production
+
+# ----------------------
+# Database files
+# ----------------------
+db.sqlite3
+*.db
+*.sqlite3
+
+# ----------------------
+# Static & Media
+# ----------------------
+staticfiles/
+media/
+
+# ----------------------
+# Docker
+# ----------------------
+docker-compose.override.yml
+*.log
+
+# ----------------------
+# IDE
+# ----------------------
+.vscode/
+.idea/
