@@ -40,3 +40,11 @@ The project uses a .env file with the following variables:
 - POSTGRES_PASSWORD
 - POSTGRES_HOST
 - POSTGRES_PORT
+
+## Deployment Instructions
+
+The project is configured for production using:
+
+- Gunicorn as WSGI server
+- Nginx as reverse proxy
+- Docker multi-container architecture
