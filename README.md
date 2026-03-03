@@ -28,3 +28,15 @@ A production-ready Django task management system using Docker, PostgreSQL, Gunic
 
 3. Open in browser:
    http://localhost
+
+## Environment Variables
+
+The project uses a .env file with the following variables:
+
+- SECRET_KEY
+- DEBUG
+- POSTGRES_DB
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- POSTGRES_HOST
+- POSTGRES_PORT
