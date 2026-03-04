@@ -65,3 +65,9 @@ The project is configured for production using:
 
 ### Edit Task
 ![Edit Task](screenshots/edit-task.jpg)
+
+## Security
+
+- Environment variables are not committed.
+- Sensitive data is stored in .env file.
+- Production configuration uses Gunicorn and Nginx.
