@@ -78,3 +78,8 @@ core/ - Django project configuration
 tasks/ - Main application logic  
 nginx/ - Reverse proxy configuration  
 screenshots/ - Application UI screenshots  
+
+## Author
+
+Elnora Ilyosjonovna  
+Backend Developer | Django & Docker
