@@ -71,3 +71,10 @@ The project is configured for production using:
 - Environment variables are not committed.
 - Sensitive data is stored in .env file.
 - Production configuration uses Gunicorn and Nginx.
+
+## Project Structure
+
+core/ - Django project configuration  
+tasks/ - Main application logic  
+nginx/ - Reverse proxy configuration  
+screenshots/ - Application UI screenshots  
