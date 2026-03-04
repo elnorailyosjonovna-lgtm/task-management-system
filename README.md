@@ -48,3 +48,20 @@ The project is configured for production using:
 - Gunicorn as WSGI server
 - Nginx as reverse proxy
 - Docker multi-container architecture
+
+## Application Screenshots
+
+### Login Page
+![Login Page](screenshots/login.jpg)
+
+### Home Page
+![Home Page](screenshots/home.jpg)
+
+### Task List
+![Task List](screenshots/task-list.jpg)
+
+### Create Task
+![Create Task](screenshots/create-task.jpg)
+
+### Edit Task
+![Edit Task](screenshots/edit-task.jpg)
