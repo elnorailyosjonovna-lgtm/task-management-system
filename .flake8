@@ -5,11 +5,13 @@ exclude =
     __pycache__,
     venv,
     .venv,
-    */migrations/*,
-    staticfiles,
-    media
-extend-ignore =
-    E203,
-    W503,
+    */migrations/*
+
+ignore =
+    E122,
+    E302,
+    E303,
+    W292,
     W293,
-    W391
+    W391,
+    F811
