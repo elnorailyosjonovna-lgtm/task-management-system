@@ -4,14 +4,7 @@ from .models import Project
 from .forms import ProjectForm
 from .forms import TaskForm
 from django.shortcuts import redirect
-from .models import Task, Project
 from django.shortcuts import get_object_or_404
-from django.shortcuts import redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from .models import Task
-from django.shortcuts import render, get_object_or_404, redirect
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from .models import Task
 
 
