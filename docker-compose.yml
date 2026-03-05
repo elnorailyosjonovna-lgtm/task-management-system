@@ -1,38 +1,46 @@
-version: "3.9"
 
 services:
   db:
     image: postgres:15
     container_name: postgres_db
-    restart: always
     env_file:
       - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   web:
     build: .
     container_name: django_app
-    restart: always
-    depends_on:
-      - db
     env_file:
       - .env
+    depends_on:
+      db:
+        condition: service_healthy
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
+    restart: unless-stopped
 
   nginx:
     image: nginx:latest
     container_name: nginx_server
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
     depends_on:
       - web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    restart: unless-stopped
 
 volumes:
   postgres_data:
