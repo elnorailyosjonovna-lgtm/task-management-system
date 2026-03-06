@@ -1,50 +1,177 @@
 # Task Management System
 
-A production-ready Django task management system using Docker, PostgreSQL, Gunicorn, and Nginx.
+A Django-based web application for managing tasks and projects.  
+The application allows users to create projects, manage tasks, and track progress.
 
-## Features
-- Create tasks
-- Update tasks
-- Delete tasks
-- Mark tasks as completed
+The project is containerized with Docker and deployed automatically using GitHub Actions CI/CD.
 
-## Technologies Used
+---
 
+# Live Demo
+
+Live deployed site:
+
+http://142.93.173.177
+
+---
+
+# Features
+
+- User authentication (login/logout)
+- Project management
+- Task creation and tracking
+- Admin interface
+- Automated testing
+- CI/CD pipeline
+- Dockerized deployment
+
+---
+
+# Technologies Used
+
+Backend:
 - Python
 - Django
+
+Database:
 - PostgreSQL
+
+Infrastructure:
 - Docker
 - Docker Compose
-- Gunicorn
+- Nginx
+- DigitalOcean
+
+CI/CD:
+- GitHub Actions
+- Docker Hub
+
+Testing:
+- Pytest
+- Flake8
+
+---
+
+# Project Structure
+task-management-system/
+│
+├── core/ # Django project configuration
+├── tasks/ # Main application
+├── nginx/ # Nginx configuration
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── .github/workflows/ # CI/CD pipeline
+
+
+
+---
+
+# Running Locally
+
+git clone https://github.com/elnorailyosjonovna-lgtm/task-management-system
+cd task-management-system
+
+
+
+### Create virtual environment
+python -m venv venv
+source venv/bin/activate
+
+
+### Install dependencies
+pip install -r requirements.txt
+
+
+
+### Run migrations
+python manage.py migrate
+
+
+### Start server
+python manage.py runserver
+
+
+
+Open:
+http://127.0.0.1:8000
+
+
+
+
+---
+
+# Docker Setup
+
+Build and run containers:
+docker compose up --build
+
+
+The application will run in containers with:
+
+- Django
+- PostgreSQL
 - Nginx
 
-## Local Setup Instructions
+---
 
-1. Clone the repository:
-   git clone https://github.com/elnorailyosjonovna-lgtm/task-management-system.git
+# CI/CD Pipeline
 
-2. Build and start containers:
-   docker compose up --build
+The project uses **GitHub Actions** for continuous integration and deployment.
 
-3. Open in browser:
-   http://localhost
+Pipeline steps:
 
-## Environment Variables
+1. Run flake8 code linting
+2. Run pytest tests
+3. Build Docker image
+4. Push image to Docker Hub
+5. Deploy automatically to DigitalOcean server via SSH
 
-The project uses a .env file with the following variables:
+Pipeline configuration:
+.github/workflows/deploy.yml
 
-- SECRET_KEY
-- DEBUG
-- POSTGRES_DB
-- POSTGRES_USER
-- POSTGRES_PASSWORD
-- POSTGRES_HOST
-- POSTGRES_PORT
 
-## Deployment Instructions
 
-The project is configured for production using:
+---
 
-- Gunicorn as WSGI server
-- Nginx as reverse proxy
-- Docker multi-container architecture
+# Environment Variables
+
+The following variables are required:
+DJANGO_SECRET_KEY
+POSTGRES_DB
+POSTGRES_USER
+POSTGRES_PASSWORD
+
+
+
+These variables are stored securely in:
+
+- `.env` file (server)
+- GitHub Secrets (CI/CD)
+
+---
+
+# Deployment
+
+The application is deployed on a **DigitalOcean droplet** using Docker Compose.
+
+Deployment directory:
+
+/opt/task-management-system
+
+
+
+The deployment process automatically:
+
+- pulls the latest Docker image
+- restarts containers
+- runs migrations
+- collects static files
+
+---
+
+# Author
+
+Elnora Ilyosjonovna
+
+
