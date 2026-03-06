@@ -66,6 +66,9 @@ The project is configured for production using:
 ### Edit Task
 ![Edit Task](screenshots/edit-task.jpg)
 
+### Running app
+![Running app](screenshots/running%20application.jpg)
+
 ## Security
 
 - Environment variables are not committed.
